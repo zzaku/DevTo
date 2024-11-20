@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="mb-4">Créer un compte</h2>
+  <form method="post" enctype="multipart/form-data" class="needs-validation">
+    {% csrf_token %}
+    <div class="row g-3">
+      {{ form.non_field_errors }}
+      <div class="col-md-6">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div class="col-md-6">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="col-md-6">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+      </div>
+      <div class="col-md-6">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+      </div>
+      <div class="col-md-12">
+        {{ form.profile_photo.label_tag }}
+        {{ form.profile_photo }}
+      </div>
+      <div class="col-md-12">
+        {{ form.technologies.label_tag }}
+        {{ form.technologies }}
+      </div>
+      <div class="col-md-12">
+        {{ form.languages.label_tag }}
+        {{ form.languages }}
+      </div>
+    </div>
+    <button class="btn btn-primary mt-4" type="submit">Créer mon compte</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,17 +1,17 @@
-from django.contrib.auth import get_user_model
-from django.contrib.auth.views import LoginView, LogoutView
+# accounts/views.py
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView, DetailView
-from django.shortcuts import get_object_or_404
-from .forms import CustomUserCreationForm
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-User = get_user_model()
+from .models import User
+from .forms import CustomUserCreationForm, UserUpdateForm
 
 class SignupView(CreateView):
     model = User
     form_class = CustomUserCreationForm
     template_name = 'accounts/signup.html'
-    success_url = reverse_lazy('login') 
+    success_url = reverse_lazy('login')
 
 class UserLoginView(LoginView):
     template_name = 'accounts/login.html'
@@ -19,22 +19,19 @@ class UserLoginView(LoginView):
 class UserLogoutView(LogoutView):
     next_page = reverse_lazy('login')
 
-class UserDeleteView(DeleteView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'accounts/user_update.html'
+    success_url = reverse_lazy('user_update')
+
+    def get_object(self):
+        return self.request.user
+
+class UserDeleteView(LoginRequiredMixin, DeleteView):
     model = User
     template_name = 'accounts/user_confirm_delete.html'
     success_url = reverse_lazy('signup')
 
     def get_object(self):
-        """Empêche la suppression d'autres utilisateurs."""
-        return get_object_or_404(User, pk=self.request.user.pk)
-
-class UserDetailView(DetailView):
-    model = User
-    template_name = 'accounts/user_detail.html'
-    context_object_name = 'user'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user = self.get_object()
-        context['stats'] = user.stats()
-        return context
+        return self.request.user
