@@ -1,0 +1,11 @@
+<form method="post">
+    {% csrf_token %}
+    <ul>
+        {% for reaction in post.reactions.all %}
+            <li>{{ reaction.type }} by {{ reaction.user.username }}</li>
+        {% endfor %}
+    </ul>
+    <p>Are you sure you want to delete this reaction?</p>
+    <button type="submit">Yes</button>
+    <a href="{% url 'post_detail' pk=object.post.pk %}">Cancel</a>
+</form>

@@ -2,6 +2,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Photo, Tag
+from .forms import PostForm, PhotoForm
 
 class PostListView(ListView):
     model = Post
@@ -12,12 +13,9 @@ class PostListView(ListView):
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     template_name = 'posts/post_form.html'
-    fields = ['content', 'tags']
+    form_class = PostForm
     success_url = reverse_lazy('post_list')
 
-    def form_valid(self, form):
-        form.instance.user = self.request.user 
-        return super().form_valid(form)
 
 class PostDetailView(DetailView):
     model = Post
@@ -27,11 +25,12 @@ class PostDetailView(DetailView):
 class PostUpdateView(LoginRequiredMixin, UpdateView):
     model = Post
     template_name = 'posts/post_form.html'
-    fields = ['content', 'tags']
+    form_class = PostForm
     success_url = reverse_lazy('post_list')
 
     def get_queryset(self):
         return self.model.objects.filter(user=self.request.user)
+
 
 class PostDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
@@ -44,7 +43,7 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
 class PhotoCreateView(LoginRequiredMixin, CreateView):
     model = Photo
     template_name = 'posts/photo_form.html'
-    fields = ['url']
+    form_class = PhotoForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user

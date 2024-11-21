@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <label for="id_type">Reaction:</label>
+    {{ form.type }}
+    <button type="submit">React</button>
+</form>
