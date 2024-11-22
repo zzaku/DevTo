@@ -112,6 +112,9 @@ venv.bak/
 # static
 /static/
 
+# requirements
+.requirements
+
 # mypy 
 .mypy_cache/ 
 
