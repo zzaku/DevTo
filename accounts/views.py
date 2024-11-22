@@ -1,23 +1,62 @@
 # accounts/views.py
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, UpdateView, DeleteView
-from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic import UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+from .models import User
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
+from posts.models import Post
 
 from .models import User
-from .forms import CustomUserCreationForm, UserUpdateForm
+from .forms import UserUpdateForm
+from comments.models import Comment
 
-class SignupView(CreateView):
-    model = User
-    form_class = CustomUserCreationForm
-    template_name = 'accounts/signup.html'
-    success_url = reverse_lazy('login')
+def home_view(request):
+    posts = Post.objects.all().order_by('-created_at')
 
-class UserLoginView(LoginView):
-    template_name = 'accounts/login.html'
+    if request.method == "POST":
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Post, id=post_id)
+        content = request.POST.get('content')
+        if content:
+            Comment.objects.create(user=request.user, post=post, content=content)
+        return redirect('home')
 
-class UserLogoutView(LogoutView):
-    next_page = reverse_lazy('login')
+    return render(request, 'accounts/home.html', {'posts': posts})
+
+def signup_view(request):
+        if request.method == 'POST':
+            email = request.POST['email']
+            password = request.POST['password']
+            username = request.POST['username']
+            user = User.objects.create_user(username=username, email=email, password=password)
+            login(request, user)
+            return redirect('home')
+        return render(request, 'accounts/signup.html')
+
+def login_view(request):
+        if request.method == "POST":
+            email = request.POST.get("email")
+            password = request.POST.get("password")
+
+            try:
+                user = User.objects.get(email=email) 
+            except User.DoesNotExist:
+                messages.error(request, "Invalid email or password")
+                return render(request, "accounts/login.html")
+
+            user = authenticate(request, username=user.username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("home") 
+            else:
+                messages.error(request, "Invalid email or password")
+                return render(request, "accounts/login.html")
+
+        return render(request, "accounts/login.html")
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):
     model = User

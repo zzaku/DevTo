@@ -1,10 +1,17 @@
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from reactions.forms import ReactionForm
-from .models import Reaction
+from .models import Like, Reaction
 from posts.models import Post
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def like_post(request, post_id):
+    post = Post.objects.get(id=post_id)
+    Like.objects.get_or_create(user=request.user, post=post)
+    return redirect('home')
 
 class ReactionCreateView(LoginRequiredMixin, CreateView):
     model = Reaction

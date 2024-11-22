@@ -1,14 +1,24 @@
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Post, Photo, Tag
 from .forms import PostForm, PhotoForm
+from django.contrib.auth.decorators import login_required
 
 class PostListView(ListView):
     model = Post
     template_name = 'posts/post_list.html'
     context_object_name = 'posts'
     ordering = ['-created_at']
+
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        content = request.POST['content']
+        Post.objects.create(user=request.user, content=content)
+        return redirect('home')
+    return render(request, 'posts/create_post.html')
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post

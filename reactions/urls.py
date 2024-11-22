@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import ReactionCreateView, ReactionDeleteView
+from .views import like_post
 
 urlpatterns = [
-    path('post/<int:post_id>/reaction/new/', ReactionCreateView.as_view(), name='reaction_create'),
-    path('reaction/<int:pk>/delete/', ReactionDeleteView.as_view(), name='reaction_delete'),
+    path('', like_post, name='like_post'),
 ]

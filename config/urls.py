@@ -19,6 +19,8 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
-    path('reactions/', include('reactions.urls')),
+    path('', include('accounts.urls')),
+    path('create_post', include('posts.urls')),
+    path('like/<int:post_id>/', include('reactions.urls')),
+    path('comment/<int:post_id>/', include('comments.urls')),
 ]

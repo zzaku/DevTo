@@ -30,7 +30,6 @@ class User(AbstractUser):
         verbose_name='user permissions',
     )
 
-
 class Technology(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
