@@ -3,7 +3,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.utils import timezone
 
-
 class CustomUserManager(BaseUserManager):
     """Custom manager for CustomUser."""
 

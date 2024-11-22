@@ -8,12 +8,12 @@ class PostForm(forms.ModelForm):
         fields = ["title", "content", "post_image", "tags", "status"]
         widgets = {
             "title": forms.TextInput(
-                attrs={"class": "form-control", "placeholder": "Enter post title"}
+                attrs={"class": "form-control", "placeholder": "Entrez un titre"}
             ),
             "content": forms.Textarea(
                 attrs={
                     "class": "form-control",
-                    "placeholder": "Write your content here...",
+                    "placeholder": "Entrez ici le contenu",
                 }
             ),
             "tags": forms.SelectMultiple(attrs={"class": "form-control"}),

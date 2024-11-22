@@ -104,48 +104,11 @@
                   <span><img src="{% static 'assets/icons/custumize-Tag.svg' %}" alt="" /></span>
                 </div>
                 <ul class="tagsList list-group">
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a class="tagItem" href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="">#testing</a>
-                  </li>
-                  <li class="list-group-item">
-                    <a href="">#testing</a>
-                  </li>
+                  {% for tag in tags %}
+                    <li class="list-group-item">
+                      <a class="tagItem" href="{% url 'posts:posts_by_tag' tag.name %}">#{{ tag.name }}</a>
+                    </li>
+                  {% endfor %}
                 </ul>
                 <div class="cardCommunity p-3 my-3">
                   <div class="cardCommunity__head d-flex align-items-center justify-content-between pb-3">
@@ -177,6 +140,11 @@
             <section class="col-12 col-md-9 col-lg-6">
               <div class="pills-nav-container nav-pill-container">
                 <ul class="pills-nav-container__ulList nav nav-pills">
+                  {% if current_tag %}
+                    <li class="pills-nav-container__ulList--bold nav-item">
+                      <a id="relevant" class="nav-link rounded-2" aria-current="page" href="#">Posts associés au tag : <span>#{{ current_tag }}</span></a>
+                    </li>
+                  {% else %}
                   <li class="pills-nav-container__ulList--bold nav-item">
                     <a id="relevant" class="nav-link rounded-2" aria-current="page" href="#">Pertinent</a>
                   </li>
@@ -186,6 +154,7 @@
                   <li class="pills-nav-container__ulList--lighter nav-item">
                     <a id="top" top class="nav-link rounded-2" href="#">Top</a>
                   </li>
+                  {% endif %}
                 </ul>
               </div>
 

@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 from posts.models import Post
 
+# Plus à jour
 class CreatePostViewTests(TestCase):
     
     def setUp(self):

@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from posts.models import Post
 from comments.models import Comment
 
+# Plus à jour
 class HomeViewTests(TestCase):
     
     def setUp(self):

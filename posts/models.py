@@ -2,7 +2,6 @@ from django.urls import reverse
 from django.db import models
 from accounts.models import CustomUser
 
-
 class Tag(models.Model):
     name = models.CharField(max_length=50, unique=True)
 
@@ -11,9 +10,9 @@ class Tag(models.Model):
 
 
 STATUS_CHOICES = (
-    ("Published", "Published"),
-    ("Private", "Private"),
-    ("Draft", "Draft"),
+    ("Published", "Public"),
+    ("Private", "Privé"),
+    ("Draft", "Brouillon"),
 )
 
 
@@ -46,10 +45,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    user = models.ForeignKey(
-        CustomUser, on_delete=models.SET_NULL, null=True, blank=True
-    )
-    # parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True, blank=True)
     content = models.TextField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -77,7 +73,7 @@ class Reaction(models.Model):
             "user",
             "post",
             "reaction_type",
-        )  # Ensure a user can react only once with the same type.
+        )
 
     def __str__(self):
         return f"{self.user} reacted {self.reaction_type} to {self.post}"

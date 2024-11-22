@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .models import Post, Comment, Reaction
+from .models import Post, Comment, Reaction, Tag
 from .forms import PostForm
 
 
@@ -21,6 +21,21 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["posts"] = Post.objects.filter(status="Published")
+        context["tags"] = Tag.objects.all()
+        return context
+    
+class PostsByTagView(ListView):
+    model = Post
+    template_name = "posts/home.html" 
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        tag_name = self.kwargs.get("tag_name")
+        return Post.objects.filter(tags__name=tag_name, status="Published")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["current_tag"] = self.kwargs.get("tag_name")
         return context
 
 
@@ -34,11 +49,10 @@ class PostListView(ListView):
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
-    template_name = "posts/post_form.html"  # Customize this as needed
-    success_url = reverse_lazy("posts:home")  # Replace with your post list URL name
+    template_name = "posts/post_form.html"
+    success_url = reverse_lazy("posts:home")
 
     def form_valid(self, form):
-        # Automatically associate the logged-in user with the post
         form.instance.user = self.request.user
         return super().form_valid(form)
 
@@ -97,10 +111,8 @@ class AddReactionView(View):
         )
 
         if existing_reaction.exists():
-            # Remove the reaction if it already exists
             existing_reaction.delete()
         else:
-            # Add a new reaction and ensure no duplicate reactions
             Reaction.objects.update_or_create(
                 user=request.user, post=post, reaction_type=reaction_type
             )

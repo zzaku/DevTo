@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 from posts.models import Post
 from reactions.models import Like
+
+# Plus à jour
 class LikePostViewTests(TestCase):
     
     def setUp(self):
