@@ -1,0 +1,157 @@
+{% load static %}
+<header>
+  <nav class="navbar bg-white p-0">
+    <div class="container bg-body-tertiary p-0">
+      <div class="custom-container bg-body d-flex align-items-center px-0 px-md-3">
+        <span class="burguerButtonSpan d-block d-md-none">
+          <button class="burguerbutton px-2 mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aatx4p9mym76amu1umourgn357bqizol" class="crayons-icon">
+              <title id="aatx4p9mym76amu1umourgn357bqizol">Menu</title>
+              <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"></path>
+            </svg>
+          </button>
+        </span>
+        <aside class="emergentOffCanvas">
+          <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">communauté DEV</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <a href="">
+                    <span class="c-link__icon"><img src="{% static 'assets/icons/hoouse-Icon.svg' %}" alt="House Icon" /></span>
+                    Home
+                  </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="">
+                    <span class="c-link__icon"><img src="{% static 'assets/icons/old-Document-Icon.svg' %}" alt="Listings ICon" /></span>
+                    Listings
+                  </a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/microphone-Icon.svg' %}" alt="House ICon" /></span>Podcasts</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/video-Camera-Icon.svg' %}" alt="House ICon" /></span>Videos</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/tag-Icon.svg' %}" alt="House ICon" /></span>Tags</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/spotligth-Icon.svg' %}" alt="House ICon" /></span>FAQ</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/color-Bags-Icon.svg' %}" alt="House ICon" /></span>Forem Shop</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/red-Heart-Icon.svg' %}" alt="House ICon" /></span>Sponsors</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/lgbt-Devto-Logo-Icon.svg' %}" alt="House ICon" /></span>About</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/trumpet-Icon.svg' %}" alt="House ICon" /></span>Contact</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/book-Icon.svg' %}" alt="House ICon" /></span>Guides</a>
+                </li>
+                <li class="list-group-item">
+                  <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/question-Emoji-Icon.svg' %}" alt="House ICon" /></span>Logiciels</a>
+                </li>
+              </ul>
+              <h5 class="bodySectionCanvasTitle ms-3 mt-3">Autre</h5>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <a href="">
+                    <span class="c-link__icon"><img src="{% static 'assets/icons/like-Yellow-Hand-Icon.svg' %}" alt="House ICon" /></span>
+                    Code de conduite
+                  </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="">
+                    <span class="c-link__icon"><img src="{% static 'assets/icons/nerd-Emoji-Icon.svg' %}" alt="House ICon" /></span>
+                    Politique de confidentialité
+                  </a>
+                </li>
+                <li class="list-group-item">
+                  <a href="">
+                    <span class="c-link__icon"><img src="{% static 'assets/icons/surprised-Eyes-Icon.svg' %}" alt="House ICon" /></span>
+                    Conditions d'utilisation
+                  </a>
+                </li>
+              </ul>
+              <div class="offcanvas-body_networks d-flex gap-3 px-3 mt-3">
+                <a href=""><span><img src="{% static 'assets/icons/tuwiter-Black-Icon.svg' %}" alt="" /></span></a>
+                <a href=""><span><img src="{% static 'assets/icons/facebock-Icon.svg' %}" alt="" /></span></a>
+                <a href=""><span><img src="{% static 'assets/icons/github-Icon.svg' %}" alt="" /></span></a>
+                <a href=""><span><img src="{% static 'assets/icons/instagram-Icon.svg' %}" alt="" /></span></a>
+                <a href=""><span><img src="{% static 'assets/icons/twitch-Icon.svg' %}" alt="Twich Icon" /></span></a>
+                <a href=""><span><img src="{% static 'assets/icons/mastodon-Icon.svg' %}" alt="" /></span></a>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <a class="navbar-brand" href="/"><img src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png" alt="DEV Community Home" width="30" height="24" class="devto-home-logo" /></a>
+        <div class="searchContainer d-none d-md-block">
+          <form class="searchContainer__searchForm d-flex" role="search">
+            <input type="hidden" />
+            <input class="searchInput form-control border-0" type="text" placeholder="Search..." aria-label="Search" />
+            <button id="buttonSearchForm" class="buttonSearch" type="submit">
+              <span>
+                <svg viewBox="1 1 22 22" aria-hidden="true" class="svgLoupe" focusable="false">
+                  <path d="m18.031 16.617 4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+        {% if request.user.is_authenticated %}
+        <div id="navUserLoged" class="buttonsContainer d-flex align-items-center d-block">
+          <a class="searchLuopeMobileButton btn d-md-none" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><span><img src="{% static 'assets/icons/loupe-Icon.svg' %}" alt="Search loupe icon" /></span></a>
+          <span class="createPost d-none d-md-block d-flex justify-content-center align-items-center" id="createPost"><a href="{% url 'posts:post_create' %}" class="d-none d-md-block d-flex">Créer un Article</a></span>
+          <a href="">
+            <span class="notifications px-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="aee3vtyno3ppruro0xmifyemrnaejm4u" class="crayons-icon">
+                <title id="aee3vtyno3ppruro0xmifyemrnaejm4u">Notifications</title>
+                <path d="M20 17h2v2H2v-2h2v-7a8 8 0 1116 0v7zm-2 0v-7a6 6 0 10-12 0v7h12zm-9 4h6v2H9v-2z"></path>
+              </svg>
+            </span>
+          </a>
+          <div class="userSessionButton dropdown">
+            <button class="buttonDropdown dropdown-toggle" href="#" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span><img src="{{ user.profile_photo.url }}" alt="" /></span></button>
+            <ul class="dropUserInfo dropdown-menu dropdown-menu-lg-end dropdown-menu-end">
+              <li>
+                <a class="dropdown-item d-flex flex-column" href="{% url 'accounts:user_update' %}"><b class="userLogedName">{{ user.first_name }} {{ user.last_name }}</b><span class="userLogedIdentifier pt-2">{{ user.email }}</span></a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:dashboard' %}">Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'posts:post_create' %}">Créer un Article</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Liste</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Réglage</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'accounts:logout' %}">Déconnexion</a>
+              </li>
+            </ul>
+          </div>
+          <div></div>
+        </div>
+        {% else %}
+        <div id="navUserUnloged" class="buttonsContainer d-flex align-items-center gap-3">
+          <span class="loginButton d-none d-md-block d-flex justify-content-center align-items-center"><a href="{% url 'accounts:login' %}" class="d-none d-md-block d-flex">Se connecter</a></span>
+          <span class="createPost d-none d-md-block d-flex justify-content-center align-items-center"><a href="{% url 'accounts:signup' %}" class="d-none d-md-block d-flex">Créer un compte</a></span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+</header>

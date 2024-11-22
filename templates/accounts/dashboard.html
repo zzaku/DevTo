@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% include 'header.html' %}
+
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0">
+          <div class="row">
+            <div class="searchContainer collapse px-0" id="collapseExample">
+              <form class="searchContainer__searchForm d-flex mt-1" role="search">
+                <input type="hidden" />
+                <input class="searchInput form-control border-0" type="text" placeholder="Search..." aria-label="Search" />
+                <button id="buttonSearchForm" class="buttonSearch" type="submit">
+                  <span>
+                    <svg viewBox="1 1 22 22" aria-hidden="true" class="svgLoupe" focusable="false">
+                      <path d="m18.031 16.617 4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
+                    </svg>
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <section class="col-12">
+              <div class="row">
+                <div class="col-4">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <h2>{{ user.stats.reactions_count }}</h2>
+                      <span>Total des réactions</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h2>{{ user.stats.comments_count }}</h2>
+                        <span>Total de commentaires</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <h2>{{ user.stats.posts_count }}</h2>
+                        <span>Total des vues</span>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {% include 'footer.html' %}
+{% endblock %}

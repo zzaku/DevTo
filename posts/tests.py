@@ -7,6 +7,7 @@ class CreatePostViewTests(TestCase):
     
     def setUp(self):
         self.user = get_user_model().objects.create_user(username='testuser', email='test@example.com', password='testpassword')
+
         self.url = reverse('create_post')
     
     def test_create_post_view_redirect_for_anonymous_user(self):

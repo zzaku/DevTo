@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% include 'header.html' %}
+
+  <main class="container position-relative">
+    <div class="row">
+      <asside class="asside-right col-md-1 d-none d-md-block">
+        <div class="reactions">
+          <div class="reactions__container">
+            <div class="reactions__container--heart">
+              <a href="#">
+                <img src="{% static 'assets/icons/black-heart-Icon.svg' %}" />
+                <p>{{ post.total_reactions }}</p>
+              </a>
+            </div>
+            <div class="reactions__container--comment">
+              <a href="#">
+                <img src="{% static 'assets/icons/black-Flat-Icon.svg' %}" />
+                <p>16</p>
+              </a>
+            </div>
+            <div class="reactions__container--save">
+              <a href="#">
+                <img src="{% static 'assets/icons/book-Icon.svg' %}" />
+                <p>100</p>
+              </a>
+            </div>
+            <div class="reactions__container--dots">
+              <a href="#"><img src="{% static 'assets/img/icons8-elipsis-28.webp' %}" /></a>
+            </div>
+          </div>
+        </div>
+      </asside>
+      <section id="postView" class="col-12 col-md-10 col-lg-7">
+        {% if user.is_authenticated and user == post.user %}
+          <div class="d-flex justify-content-end mb-2">
+            <a href="{% url 'posts:post_update' post.pk %}" class="btn btn-primary me-2">Mettre à jour l'Article</a>
+            <a href="{% url 'posts:post_delete' post.pk %}" class="btn btn-danger">Supprimer l'Article</a>
+          </div>
+        {% endif %}
+        <div class="card-cont d-flex justify-content-center">
+          <div class="img-container card mb-3 d-flex">
+            <a href="#"><img src="{{ post.post_image.url }}" class="card-img-top" alt="img del post" /></a>
+            <div class="user-data-space d-flex">
+              <div class="user-data-space__mini">
+                <a href="{{ post.get_absolute_url }}"><img class="rounded-circle" src="{{ post.user.profile_photo.url }}" /></a>
+              </div>
+              <div class="user-data-space__name">
+                <a class="user-data-space__name--bold" href="{{ post.get_absolute_url }}"><p class="author-name">{{ post.user.get_full_name }}</p></a>
+                <a class="text-black" href="{{ post.get_absolute_url }}"><p class="reation-date">Posté le {{ post.created_at }}</p></a>
+              </div>
+            </div>
+            <div class="user-data-space__tags card-body">
+              <h2 class="card-title">{{ post.title }}</h2>
+              <div class="user-data-space__tags--lighter">
+                <ul>
+                  {% for tag in post.tags.all %}
+                    <li>
+                      <a href="#"><p>#{{ tag.name }}</p></a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div>{{ post.content }}</div>
+
+              <div class="reactions">
+                <p>Total Réactions: {{ post.total_reactions }}</p>
+                <div>
+                  {% for reaction in post.reaction_summary %}
+                    <span>{{ reaction.reaction_type|title }}: {{ reaction.count }}</span>
+                  {% endfor %}
+                </div>
+
+                <div class="d-flex mt-3">
+                  <form method="post" action="{% url 'posts:add_reaction' post.pk 'like' %}">
+                    {% csrf_token %}
+                    <button type="submit">❤️ Like</button>
+                  </form>
+                  <form method="post" action="{% url 'posts:add_reaction' post.pk 'laugh' %}">
+                    {% csrf_token %}
+                    <button type="submit">😄 Amusant</button>
+                  </form>
+                  <form method="post" action="{% url 'posts:add_reaction' post.pk 'celebrate' %}">
+                    {% csrf_token %}
+                    <button type="submit">🎉 Célébration</button>
+                  </form>
+                  <form method="post" action="{% url 'posts:add_reaction' post.pk 'insightful' %}">
+                    {% csrf_token %}
+                    <button type="submit">💡 Perspicace</button>
+                  </form>
+                  <form method="post" action="{% url 'posts:add_reaction' post.pk 'curious' %}">
+                    {% csrf_token %}
+                    <button type="submit">🤔 Curieux</button>
+                  </form>
+                </div>
+              </div>
+
+              <h2 class="mt-5 card-title">Top Commentaires</h2>
+              <div>
+                <a href="{% url 'posts:create_comment' post.pk %}">Laisser un commentaire</a>
+              </div>
+              {% for comment in post.comment_set.all %}
+                <div class="comment-section">
+                  <div class="comment-section__picture">
+                    <a href="#"><img src="{{ comment.post.user.profile_photo.url }}" class="rounded-circle" /></a>
+                  </div>
+                  <div class="comment-section__rectangle">
+                    <div class="comment-section__rectangle--username">
+                      <a href="#">
+                        <h6>{{ comment.post.user.get_full_name }}</h6>
+                        <p>{{ comment.created_at }}</p>
+                      </a>
+                    </div>
+                    <div class="comment-section__rectangle--comment">
+                      <a href="#"><p>{{ comment.content }}</p></a>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+      <asside class="asside-left col-lg-4 d-none d-lg-block">
+        <div class="cardUserFollow">
+          <div class="cardUserDate">
+            <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--DQmJ_XZV--/c_fill,f_auto,fl_progressive,h_90,q_auto,w_90/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/826332/224dd80d-2524-4499-b730-515327a6af1a.jpg" class="cardUserDate__image" alt="..." />
+            <a class="cardUserDate__name">Ernane Ferreira</a>
+          </div>
+          <div class="cardUserFollow__body">
+            <button class="cardUserFollow__body--btn btn-primary">Follow</button>
+            <p class="cardUserFollow__body--description">A big dreamer, technology lover and software development enthusiast.</p>
+            <div class="cardUserFollow__body--informationUser">
+              <span class="cardUserFollow__body--datesTitle">LOCATION</span>
+              <p class="cardUserFollow__body--datesText">Rio Grande do Norte, Brazil</p>
+              <span class="cardUserFollow__body--datesTitle">EDUCATION</span>
+              <p class="cardUserFollow__body--datesText">University student of the interdisciplinary bachelor's degree in Science and Technology</p>
+              <span class="cardUserFollow__body--datesTitle">PRONOUNS</span>
+              <p class="cardUserFollow__body--datesText">Ele/dele</p>
+              <span class="cardUserFollow__body--datesTitle">WORK</span>
+              <p class="cardUserFollow__body--datesText">Developer at Real Seguro Viagem</p>
+              <span class="cardUserFollow__body--datesTitle">JOINED</span>
+              <p class="cardUserFollow__body--datesText">Mar 6, 2022</p>
+            </div>
+          </div>
+        </div>
+        <div class="cardMoreUser">
+          <ul class="cardMoreUser__list list-group list-group-flush">
+            <li class="cardMoreUser__list--title list-group-item">
+              More from <a href="">Ernane Ferreira</a>
+            </li>
+            <li class="cardMoreUser__list--text list-group-item">
+              <a href="">[pt-br] Guia rápido e prático dos principais comandos git</a><br />
+              <span>#</span>git
+              <span>#</span>gitlab
+              <span>#</span>github
+              <span>#</span>codequality
+            </li>
+          </ul>
+        </div>
+        <div class="cardCategory">
+          <div class="cardCategory__body">
+            <div class="cardCategory__body--link">
+              <p>DEV Community</p>
+              <a href="" name="btn-community" type="button" value=""><img src="/assets/img/icons8-elipsis-28.webp" alt="" /></a>
+            </div>
+            <p class="cardCategory__body--title card-title">👋 Do you have an org account on DEV?</p>
+            <p class="cardCategory__body--description card-title">Maximize the impact of your presence on DEV with our new Pro Tools suite.</p><br />
+            <p class="cardCategory__body--subTitle card-title">Get access to:</p><br />
+            <ul class="cardCategory__body--list card-title">
+              <li>Advanced analytics and insights</li>
+              <li>
+                The opportunity to use <b>this space</b> next to your own posts to help your readers engage more deeply with your message.
+              </li>
+            </ul><br />
+            <a href="#" class="cardCategory__body--btn btn btn-primary">Try Pro Tools for Free</a>
+          </div>
+        </div>
+      </asside>
+    </div>
+  </main>
+
+  {% include 'footer.html' %}
+{% endblock %}

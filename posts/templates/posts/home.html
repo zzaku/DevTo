@@ -1,0 +1,303 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% include 'header.html' %}
+
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0">
+          <div class="row">
+            <div class="searchContainer collapse px-0" id="collapseExample">
+              <form class="searchContainer__searchForm d-flex mt-1" role="search">
+                <input type="hidden" />
+                <input class="searchInput form-control border-0" type="text" placeholder="Search..." aria-label="Search" />
+                <button id="buttonSearchForm" class="buttonSearch" type="submit">
+                  <span>
+                    <svg viewBox="1 1 22 22" aria-hidden="true" class="svgLoupe" focusable="false">
+                      <path d="m18.031 16.617 4.283 4.282-1.415 1.415-4.282-4.283A8.96 8.96 0 0 1 11 20c-4.968 0-9-4.032-9-9s4.032-9 9-9 9 4.032 9 9a8.96 8.96 0 0 1-1.969 5.617zm-2.006-.742A6.977 6.977 0 0 0 18 11c0-3.868-3.133-7-7-7-3.868 0-7 3.132-7 7 0 3.867 3.132 7 7 7a6.977 6.977 0 0 0 4.875-1.975l.15-.15z"></path>
+                    </svg>
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <aside class="col-md-3 d-none d-md-block">
+              <nav class="assideLeftFirstNav mt-3">
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <a href="">
+                      <span class="c-link__icon"><img src="{% static 'assets/icons/hoouse-Icon.svg' %}" alt="House ICon" /></span>
+                      Home
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="">
+                      <span class="c-link__icon"><img src="{% static 'assets/icons/old-Document-Icon.svg' %}" alt="House ICon" /></span>
+                      Lsitings
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/microphone-Icon.svg' %}" alt="House ICon" /></span>Podcasts</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/video-Camera-Icon.svg' %}" alt="House ICon" /></span>Videos</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/tag-Icon.svg' %}" alt="House ICon" /></span>Tags</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/spotligth-Icon.svg' %}" alt="House ICon" /></span>FAQ</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/color-Bags-Icon.svg' %}" alt="House ICon" /></span>Forem Shop</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/red-Heart-Icon.svg' %}" alt="House ICon" /></span>Sponsors</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/lgbt-Devto-Logo-Icon.svg' %}" alt="House ICon" /></span>About</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/trumpet-Icon.svg' %}" alt="House ICon" /></span>Contact</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/book-Icon.svg' %}" alt="House ICon" /></span>Guides</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href=""><span class="c-link__icon"><img src="{% static 'assets/icons/question-Emoji-Icon.svg' %}" alt="House ICon" /></span>Software comparisons</a>
+                  </li>
+                </ul>
+                <h5 class="listTitle ms-3 mt-3">Other</h5>
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <a href="">
+                      <span class="c-link__icon"><img src="{% static 'assets/icons/like-Yellow-Hand-Icon.svg' %}" alt="House ICon" /></span>
+                      Code of Conduct
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="">
+                      <span class="c-link__icon"><img src="{% static 'assets/icons/nerd-Emoji-Icon.svg' %}" alt="House ICon" /></span>
+                      Privacy Policy
+                    </a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="">
+                      <span class="c-link__icon"><img src="{% static 'assets/icons/surprised-Eyes-Icon.svg' %}" alt="House ICon" /></span>
+                      Terms of Use
+                    </a>
+                  </li>
+                </ul>
+                <div class="assideLeftNetworks d-flex gap-2 px-3 my-3">
+                  <a href=""><span><img src="{% static 'assets/icons/tuwiter-Black-Icon.svg' %}" alt="" /></span></a>
+                  <a href=""><span><img src="{% static 'assets/icons/facebock-Icon.svg' %}" alt="" /></span></a>
+                  <a href=""><span><img src="{% static 'assets/icons/github-Icon.svg' %}" alt="" /></span></a>
+                  <a href=""><span><img src="{% static 'assets/icons/instagram-Icon.svg' %}" alt="" /></span></a>
+                  <a href=""><span><img src="{% static 'assets/icons/twitch-Icon.svg' %}" alt="" /></span></a>
+                  <a href=""><span><img src="{% static 'assets/icons/mastodon-Icon.svg' %}" alt="" /></span></a>
+                </div>
+                <div class="tagsListTitle d-flex my-2 ms-2 justify-content-between align-items-center">
+                  <h5 class="listTitle ms-3 mt-3">Mes tags</h5>
+                  <span><img src="{% static 'assets/icons/custumize-Tag.svg' %}" alt="" /></span>
+                </div>
+                <ul class="tagsList list-group">
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a class="tagItem" href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="">#testing</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="">#testing</a>
+                  </li>
+                </ul>
+                <div class="cardCommunity p-3 my-3">
+                  <div class="cardCommunity__head d-flex align-items-center justify-content-between pb-3">
+                    <p class="cardCommunity__head--title">DEV Community</p>
+                    <a href="" class="cardCommunity__head--btnCommunity" name="btn-community" type="button" value=""><img class="cardCommunity__head--btnCommunity--icon" src="/assets/img/icons8-elipsis-28.webp" alt="" /></a>
+                  </div>
+                  <img class="cardCommunity__image mb-3" src="https://res.cloudinary.com/practicaldev/image/fetch/s--tUXa-lQ2--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/l0et407b181thswgfd71.jpg" alt="" />
+                  <div class="cardCommunity__body text-start mt-3">
+                    <p class="cardComunityAsideLeft px-2">
+                      <a class="" href="">Fill out this survey</a><strong>and help us moderate our community by becoming a tag moderator here at DEV.</strong>
+                    </p>
+                  </div>
+                </div>
+                <div class="cardCommunity p-3 my-3">
+                  <div class="cardCommunity__head d-flex align-items-center justify-content-between pb-3">
+                    <p class="cardCommunity__head--title">DEV Community</p>
+                    <a href="" class="cardCommunity__head--btnCommunity" name="btn-community" type="button" value=""><img class="cardCommunity__head--btnCommunity--icon" src="/assets/img/icons8-elipsis-28.webp" alt="" /></a>
+                  </div>
+                  <img class="cardCommunity__image mb-3" src="https://res.cloudinary.com/practicaldev/image/fetch/s--vf_P4FwD--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_350/https://p32.f1.n0.cdn.getcloudapp.com/items/OAu6mnD1/20ada628-9434-4772-a8e0-7d861713d3c4.jpg" alt="" />
+                  <div class="cardCommunity__body text-start">
+                    <h3 class="title pb-3">The Forem Shop is Here!</h3>
+                    <p class="cardComunityAsideLeft">
+                      <a href="">>> Shop Forem, DEV, and CodeNewbie merch</a>
+                    </p>
+                  </div>
+                </div>
+              </nav>
+            </aside>
+            <section class="col-12 col-md-9 col-lg-6">
+              <div class="pills-nav-container nav-pill-container">
+                <ul class="pills-nav-container__ulList nav nav-pills">
+                  <li class="pills-nav-container__ulList--bold nav-item">
+                    <a id="relevant" class="nav-link rounded-2" aria-current="page" href="#">Pertinent</a>
+                  </li>
+                  <li class="pills-nav-container__ulList--lighter nav-item">
+                    <a id="lastest" class="nav-link rounded-2" href="#">Récent</a>
+                  </li>
+                  <li class="pills-nav-container__ulList--lighter nav-item">
+                    <a id="top" top class="nav-link rounded-2" href="#">Top</a>
+                  </li>
+                </ul>
+              </div>
+
+              {% for post in posts %}
+              <div class="card mb-3">
+                <div class="card-img-top">
+                  <a href="{{ post.get_absolute_url }}"><img src="{{ post.post_image.url }}" class="card-img-top" alt="img del post" /></a>
+                </div>
+                <div class="card-body">
+                  <div class="user-data-space d-flex">
+                    <div class="user-data-space__mini">
+                      <a href="./html/post.html"><img class="rounded-circle" src="{{ post.user.profile_photo.url }}" /></a>
+                    </div>
+                    <div class="user-data-space__name">
+                      <a class="user-data-space__name--bold" href="./html/post.html"><p class="author-name">{{ post.user.get_full_name }}</p></a>
+                      <a class="text-decoration-none text-black" href="./html/post.html"><p class="reation-date">Posté le {{ post.created_at }}</p></a>
+                    </div>
+                  </div>
+                  <div class="infoWrapper">
+                    <div>
+                      <h2 class="card-title user-data-space d-flex"><a class="titleAnchor" href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    </div>
+                    <div class="user-data-space__tags--lighter">
+                      <ul>
+                        {% for tag in post.tags.all %}
+                        <li>
+                          <a href="#"><p>#{{ tag.name }}</p></a>
+                        </li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div>
+                      <div class="reactionsContainer d-flex flex-row">
+                        <a href="#">
+                          <div class="user-data-space__tags--emojis">
+                            <div class="emojisReaction">
+                              <div class="emojisReaction__icons">
+                                <a class="text-decoration-none" href="#">
+                                  <img src="{% static 'assets/icons/red-Heart-Icon.svg' %}" alt="icono de corazon" />
+                                  <img src="{% static 'assets/icons/unicorn-Icon.svg' %}" alt="icon" />
+                                  <img src="{% static 'assets/icons/crazy-Man-Icon.svg' %}" alt="icon" />
+                                  <img src="{% static 'assets/icons/raise-.svg' %}" alt="icon" />
+                                  <img src="{% static 'assets/icons/fire-Icon.svg' %}" alt="icon" />
+                                  <span class=""><p>{{ post.total_reactions }} réactions</p></span>
+                                </a>
+                              </div>
+                              <div class="emojisReaction__comments">
+                                <a class="text-container" href="#">
+                                  <img src="{% static 'assets/icons/comments-count.svg' %}" alt="" />
+                                  <p>
+                                    {{ post.comment_set.count }}<span class="d-none d-md-inline-block">commentaires</span>
+                                  </p>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <div>
+                          <div class="minutes-read">
+                            <a class="minutes-read__anc" href="#">
+                              <p class="card-text">
+                                <small class="text-body-secondary">5 minutes de lecture</small>
+                              </p>
+                              <img src="{% static 'assets/icons/save-No-Background-Icon.svg' %}" class="mt-1" />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+            </section>
+            <aside class="col-lg-3 d-none d-lg-block g-3">
+              <div class="cardCommunity p-3">
+                <div class="cardCommunity__head d-flex align-items-center justify-content-between pb-3">
+                  <p class="cardCommunity__head--title">DEV Communauté</p>
+                  <a href="" class="cardCommunity__head--btnCommunity" name="btn-community" type="button" value=""><img class="cardCommunity__head--btnCommunity--icon" src="/assets/img/icons8-elipsis-28.webp" alt="" /></a>
+                </div>
+                <img class="cardCommunity__image" src="https://res.cloudinary.com/practicaldev/image/fetch/s--kUZijgSE--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_350/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gxs2kw7xsfruxa53bqz3.png" alt="" />
+                <div class="cardCommunity__body text-start">
+                  <h3 class="cardCommunity__body--subTitle pb-3"><a href="">Join the GitHub + Dev Hackathon!</a></h3>
+                  <p class="cardCommunity__body--text">Utilize GitHub Actions or Codespaces, benefit open-source, and win up to $1,500 USD by sharing your project on DEV.</p>
+                </div>
+              </div>
+              <div class="cardListings">
+                <div class="cardListings__header d-flex align-items-center justify-content-between">
+                  <h3 class="cardListings__header--Title">Listing</h3>
+                  <a class="cardListings__header--link" href="">See all</a>
+                </div>
+                <ul class="cardListings__list list-group list-group-flush">
+                  <a class="cardListings__list--trend" href="">Chainpage challenge<p class="cardListings__list--trend-text">misc</p></a>
+                </ul>
+              </div>
+              <div class="btnListing">
+                <a class="btnListing__link" href="">Create a Listing</a>
+              </div>
+              <div class="cardDiscuss">
+                <div class="cardDiscuss__header">
+                  <h3 class="cardDiscuss__header--title">#discuss</h3>
+                </div>
+                <ul class="cardDiscuss__list list-group list-group-flush">
+                  <a class="cardDiscuss__list--relevant" href="">What Qualities Do You Seek in Your Work Enviroment?<p class="cardDiscuss__list--relevantText">5 comments</p></a>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {% include 'footer.html' %}
+{% endblock %}

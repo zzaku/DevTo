@@ -8,7 +8,9 @@ class CommentPostViewTests(TestCase):
     
     def setUp(self):
         self.user = get_user_model().objects.create_user(username='testuser', email='test@example.com', password='testpassword')
+
         self.post = Post.objects.create(user=self.user, content="Test Post Content")
+
         self.url = reverse('comment_post', kwargs={'post_id': self.post.id})
     
     def test_comment_post_view_redirect_for_anonymous_user(self):

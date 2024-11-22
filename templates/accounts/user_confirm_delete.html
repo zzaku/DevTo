@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0 mt-5">
+          <div class="row mt-5">
+            <div class="card col-md-6 offset-md-3 p-5 mt-5">
+              <h2 class="mb-4 text-danger">Supprimer mon compte</h2>
+              <p>Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
+              <form method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Oui, supprimer mon compte</button>
+                <a href="{% url 'accounts:user_update' %}" class="btn btn-secondary">Annuler</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}

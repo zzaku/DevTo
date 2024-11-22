@@ -1,16 +1,27 @@
 from django import forms
-from .models import Post, Photo
+from .models import Post, Comment
+
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['content', 'tags']
+        fields = ["title", "content", "post_image", "tags", "status"]
         widgets = {
-            'content': forms.Textarea(attrs={'rows': 4}),
-            'tags': forms.CheckboxSelectMultiple(),
+            "title": forms.TextInput(
+                attrs={"class": "form-control", "placeholder": "Enter post title"}
+            ),
+            "content": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Write your content here...",
+                }
+            ),
+            "tags": forms.SelectMultiple(attrs={"class": "form-control"}),
+            "status": forms.Select(attrs={"class": "form-control"}),
         }
 
-class PhotoForm(forms.ModelForm):
+
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Photo
-        fields = ['url']
+        model = Comment
+        fields = ["content"]

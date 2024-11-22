@@ -82,4 +82,3 @@ class LoginViewTests(TestCase):
         }
         response = self.client.post(self.url, data=data)
         self.assertFormError(response, 'form', None, 'Invalid email or password')
-

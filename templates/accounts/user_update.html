@@ -9,7 +9,7 @@
         <div class="container p-0 mt-5">
           <div class="row mt-5">
             <div class="card col-md-6 offset-md-3 p-5 mt-5">
-              <h2 class="mb-4">Créer un compte</h2>
+              <h2 class="mb-4">Mettre à jour mon profil</h2>
               <form method="post" enctype="multipart/form-data" class="needs-validation">
                 {% csrf_token %}
                 {% comment %} <div class="row g-3">
@@ -18,10 +18,6 @@
                     {{ form.username }}</div>
                   <div class="col-md-6">{{ form.email.label_tag }}
                     {{ form.email }}</div>
-                  <div class="col-md-6">{{ form.password1.label_tag }}
-                    {{ form.password1 }}</div>
-                  <div class="col-md-6">{{ form.password2.label_tag }}
-                    {{ form.password2 }}</div>
                   <div class="col-md-12">{{ form.profile_photo.label_tag }}
                     {{ form.profile_photo }}</div>
                   <div class="col-md-12">{{ form.technologies.label_tag }}
@@ -30,8 +26,11 @@
                     {{ form.languages }}</div>
                 </div> {% endcomment %}
                 {{ form|crispy }}
-                <button class="btn btn-primary mt-4" type="submit">Créer mon compte</button>
+                <button class="btn btn-success mt-4" type="submit">Mettre à jour</button>
               </form>
+              <div class="text-center mt-5">
+                <a href="{% url 'accounts:user_delete' %}" class="link-danger">Delete Account</a>
+              </div>
             </div>
           </div>
         </div>

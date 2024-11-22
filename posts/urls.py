@@ -1,9 +1,14 @@
 from django.urls import path
-from .views import (
-    create_post
-)
-from .views import PhotoCreateView
+from .views import HomePageView, PostCreateView, PostDetailView, PostUpdateView, PostDeleteView, CreateCommentView, AddReactionView
+
+app_name = 'posts'
 
 urlpatterns = [
-    path('', create_post, name='create_post'),
+    path('', HomePageView.as_view(), name='home'),
+    path("post/create/", PostCreateView.as_view(), name="post_create"),
+    path("<int:pk>/", PostDetailView.as_view(), name="post_detail"),
+    path('<int:pk>/update/', PostUpdateView.as_view(), name='post_update'),
+    path('<int:pk>/delete/', PostDeleteView.as_view(), name='post_delete'),
+    path("<int:pk>/comment/", CreateCommentView.as_view(), name="create_comment"),
+    path('<int:pk>/react/<str:reaction_type>/', AddReactionView.as_view(), name='add_reaction'),
 ]

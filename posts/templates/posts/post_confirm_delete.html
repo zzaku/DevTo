@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <main class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="container p-0 mt-5">
+          <div class="row mt-5">
+            <div class="card col-md-6 offset-md-3 p-5 mt-5">
+              <h2>Supression Article</h2>
+              <p>Etes-vous sûr de vouloir supprimer cet article?</p>
+              <p>
+                <strong>{{ object.title }}</strong>
+              </p>
+              <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Oui, Supprimer</button>
+                <a href="{% url 'posts:home' %}" class="btn btn-secondary">Annuler</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+{% endblock %}
